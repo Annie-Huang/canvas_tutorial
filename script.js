@@ -182,6 +182,30 @@ function clear() {
 function newPos() {
     player.x += player.dx;
     player.y += player.dy;
+
+    detectWalls();
+}
+
+function detectWalls() {
+    // Left wall
+    if (player.x < 0) {
+        player.x = 0;
+    }
+
+    // Right Wall
+    if (player.x + player.w > canvas.width) {
+        player.x = canvas.width - player.w;
+    }
+
+    // Top wall
+    if (player.y < 0) {
+        player.y = 0;
+    }
+
+    // Bottom wall
+    if (player.y + player.h > canvas.height) {
+        player.y = canvas.height - player.h;
+    }
 }
 
 function update() {
