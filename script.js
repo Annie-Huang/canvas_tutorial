@@ -111,53 +111,91 @@ const ctx = canvas.getContext('2d');
 
 // ====================================================================================
 
-// Animation 1
-const circle = {
-    x: 200,
+// // Animation 1
+// const circle = {
+//     x: 200,
+//     y: 200,
+//     size: 30,
+//     dx: 5,
+//     dy: 4
+// };
+//
+// function drawCircle() {
+//     ctx.beginPath();
+//     ctx.arc(circle.x, circle.y, circle.size, 0, Math.PI * 2);
+//     ctx.fillStyle = 'purple';
+//     ctx.fill();
+// }
+//
+// function update() {
+//     ctx.clearRect(0,0, canvas.width, canvas.height);
+//
+//     drawCircle();
+//
+//     // change position
+//     circle.x += circle.dx;
+//     circle.y += circle.dy;
+//
+//     // Detect side walls
+//     if (circle.x + circle.size > canvas.width || circle.x - circle.size < 0 ) {
+//         // console.log('HIT');
+//         circle.dx *= -1; // circle.dx = circle.dx * -1;
+//     }
+//
+//     // Detect top[ and bottom walls
+//     if (circle.y + circle.size > canvas.height || circle.y - circle.size < 0 ) {
+//         circle.dy *= -1;
+//     }
+//
+//     // this is a very cool function, it will cause it to repaint all the time.
+//     requestAnimationFrame(update);
+//     // console.log(123); // You can see it is being called all the time.
+// }
+//
+// update();
+
+
+// ====================================================================================
+
+// Animation 2
+
+const image = document.getElementById('source');
+
+const player = {
+    w: 50,
+    h: 70,
+    x: 20,
     y: 200,
-    size: 30,
-    dx: 5,
-    dy: 4
+    speed: 5,
+    dx: 0,
+    dy: 0
 };
 
-function drawCircle() {
-    ctx.beginPath();
-    ctx.arc(circle.x, circle.y, circle.size, 0, Math.PI * 2);
-    ctx.fillStyle = 'purple';
-    ctx.fill();
+function drawPlayer() {
+    ctx.drawImage(image, player.x, player.y, player.w, player.h);
+}
+
+function clear() {
+    ctx.clearRect(0,0, canvas.width, canvas.height);
+}
+
+function newPos() {
+    player.x += player.dx;
+    player.y += player.dy;
 }
 
 function update() {
-    ctx.clearRect(0,0, canvas.width, canvas.height);
+    clear();
 
-    drawCircle();
+    drawPlayer();
 
-    // change position
-    circle.x += circle.dx;
-    circle.y += circle.dy;
+    newPos();
 
-    // Detect side walls
-    if (circle.x + circle.size > canvas.width || circle.x - circle.size < 0 ) {
-        // console.log('HIT');
-        circle.dx *= -1; // circle.dx = circle.dx * -1;
-    }
-
-    // Detect top[ and bottom walls
-    if (circle.y + circle.size > canvas.height || circle.y - circle.size < 0 ) {
-        circle.dy *= -1;
-    }
-
-    // this is a very cool function, it will cause it to repaint all the time.
     requestAnimationFrame(update);
-    // console.log(123); // You can see it is being called all the time.
 }
 
+
 update();
-
-
-
-
-
 
 
 
