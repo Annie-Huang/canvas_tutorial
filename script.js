@@ -34,6 +34,7 @@ const ctx = canvas.getContext('2d');
 // ctx.strokeText('Hello World1', 400, 100);
 
 // Paths
+// Triangle
 ctx.beginPath();
 ctx.moveTo(50, 50);
 // draw a straight line
@@ -47,7 +48,20 @@ ctx.fillStyle = 'coral';
 ctx.fill(); // fill the whole area.
 
 
+ctx.beginPath();
+ctx.moveTo(200, 50);
+ctx.lineTo(150, 200);
+ctx.lineTo(250, 200);
+ctx.closePath();
+ctx.stroke();
 
+
+// Rectangle
+ctx.beginPath();
+// rect + fill = fillRect
+ctx.rect(300, 50, 150, 100);
+ctx.fillStyle = 'teal';
+ctx.fill();
 
 
 
